@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{6eecf44a-001f-42a3-91f3-62168f9e8c1d}</ProjectGuid>
+    <RootNamespace>Kostur</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\GameLogic.cpp" />
+    <ClCompile Include="Source\GameState.cpp" />
+    <ClCompile Include="Source\Helper.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header\CardTypes.h" />
+    <ClInclude Include="Header\Constants.h" />
+    <ClInclude Include="Header\GameLogic.h" />
+    <ClInclude Include="Header\GameState.h" />
+    <ClInclude Include="Header\Helper.h" />
+    <ClInclude Include="Header\stb_image.h" />
+    <ClInclude Include="Header\Util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="texture.frag" />
+    <None Include="texture.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Kostur\x64\Resources\back_blue.png" />
+    <Image Include="..\Kostur\x64\Resources\back_red.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs1.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs10.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs2.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs3.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs4.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs5.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs6.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs7.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs8.png" />
+    <Image Include="..\Kostur\x64\Resources\clubs9.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond1.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond10.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond2.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond3.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond4.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond5.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond6.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond7.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond8.png" />
+    <Image Include="..\Kostur\x64\Resources\diamond9.png" />
+    <Image Include="..\Kostur\x64\Resources\hand_thin_open.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts1.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts10.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts2.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts3.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts4.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts5.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts6.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts7.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts8.png" />
+    <Image Include="..\Kostur\x64\Resources\hearts9.png" />
+    <Image Include="..\Kostur\x64\Resources\joker_black.png" />
+    <Image Include="..\Kostur\x64\Resources\joker_red.png" />
+    <Image Include="..\Kostur\x64\Resources\look_d.png" />
+    <Image Include="..\Kostur\x64\Resources\spades1.png" />
+    <Image Include="..\Kostur\x64\Resources\spades10.png" />
+    <Image Include="..\Kostur\x64\Resources\spades2.png" />
+    <Image Include="..\Kostur\x64\Resources\spades3.png" />
+    <Image Include="..\Kostur\x64\Resources\spades4.png" />
+    <Image Include="..\Kostur\x64\Resources\spades5.png" />
+    <Image Include="..\Kostur\x64\Resources\spades6.png" />
+    <Image Include="..\Kostur\x64\Resources\spades7.png" />
+    <Image Include="..\Kostur\x64\Resources\spades8.png" />
+    <Image Include="..\Kostur\x64\Resources\spades9.png" />
+    <Image Include="..\Kostur\x64\Resources\table_high_res.jpg" />
+    <Image Include="Resources\0.png" />
+    <Image Include="Resources\1.png" />
+    <Image Include="Resources\2.png" />
+    <Image Include="Resources\3.png" />
+    <Image Include="Resources\4.png" />
+    <Image Include="Resources\5.png" />
+    <Image Include="Resources\6.png" />
+    <Image Include="Resources\7.png" />
+    <Image Include="Resources\8.png" />
+    <Image Include="Resources\9.png" />
+    <Image Include="Resources\anger1.png" />
+    <Image Include="Resources\anger2.png" />
+    <Image Include="Resources\anger3.png" />
+    <Image Include="Resources\back_blue_big.png" />
+    <Image Include="Resources\back_red_big.png" />
+    <Image Include="Resources\blue_wins.png" />
+    <Image Include="Resources\card_back_red.png" />
+    <Image Include="Resources\pay_respect_btn.png" />
+    <Image Include="Resources\player_card_back_design_1_red.png" />
+    <Image Include="Resources\rage_btn.png" />
+    <Image Include="Resources\red_wins.png" />
+    <Image Include="Resources\respect.png" />
+    <Image Include="x64\Resources\clubs11.png" />
+    <Image Include="x64\Resources\clubs12.png" />
+    <Image Include="x64\Resources\clubs13.png" />
+    <Image Include="x64\Resources\diamond11.png" />
+    <Image Include="x64\Resources\diamond12.png" />
+    <Image Include="x64\Resources\diamond13.png" />
+    <Image Include="x64\Resources\hand_thin_point.png" />
+    <Image Include="x64\Resources\hearts11.png" />
+    <Image Include="x64\Resources\hearts12.png" />
+    <Image Include="x64\Resources\hearts13.png" />
+    <Image Include="x64\Resources\spades11.png" />
+    <Image Include="x64\Resources\spades12.png" />
+    <Image Include="x64\Resources\spades13.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\glfw.3.4.0\build\native\glfw.targets" Condition="Exists('packages\glfw.3.4.0\build\native\glfw.targets')" />
+    <Import Project="packages\glew-2.2.0.2.2.0.1\build\native\glew-2.2.0.targets" Condition="Exists('packages\glew-2.2.0.2.2.0.1\build\native\glew-2.2.0.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\glfw.3.4.0\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\glfw.3.4.0\build\native\glfw.targets'))" />
+    <Error Condition="!Exists('packages\glew-2.2.0.2.2.0.1\build\native\glew-2.2.0.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\glew-2.2.0.2.2.0.1\build\native\glew-2.2.0.targets'))" />
+  </Target>
+</Project>

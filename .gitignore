@@ -1,0 +1,25 @@
+# Build folders
+x64/
+Debug/
+Release/
+bin/
+obj/
+
+# Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# CMake cache if exists
+CMakeCache.txt
+CMakeFiles/
+
+# Shader intermediate (optional)
+*.pch
+
+# Ignore VS auto-generated folders
+.vs/
+
+# Ignore packages
+packages/
