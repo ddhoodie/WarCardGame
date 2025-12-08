@@ -209,6 +209,7 @@
     <Image Include="Resources\back_red_big.png" />
     <Image Include="Resources\blue_wins.png" />
     <Image Include="Resources\card_back_red.png" />
+    <Image Include="Resources\my_info.png" />
     <Image Include="Resources\pay_respect_btn.png" />
     <Image Include="Resources\player_card_back_design_1_red.png" />
     <Image Include="Resources\rage_btn.png" />

@@ -44,7 +44,7 @@ void handleRightClick(float mx, float my)
 
 void updateCornerFold()
 {
-    float speed = 0.0002f;
+    float speed = 0.02f;
     for (int i = 0; i < HAND_SIZE; i++)
     {
         float& f = hand[i].cornerFold;
@@ -247,7 +247,7 @@ void renderHand(
     float deckX,
     float deckY,
     unsigned int deckTex,
-    int dir        // +1 za RED, -1 za BLUE
+    int dir        
 )
 {
     for (int i = 0; i < HAND_SIZE; i++)
@@ -295,17 +295,11 @@ void renderHand(
             globalVAO,
             false);
 
-        if (hand[i].flipProgress < 0.5f && hand[i].cornerFold > 0.0f)
+        if (hand[i].cornerFold > 0.0f)
         {
             unsigned int faceTex = getCardTextureByID(hand[i].cardID);
 
-            drawQuad(globalShader, faceTex,
-                cardX - SCALE_X * 0.75f,
-                cardY + SCALE_Y * 0.75f,
-                SCALE_X * 0.25f,
-                SCALE_Y * 0.25f,
-                globalVAO,
-                false);
+            //drawFoldTriangle();  CAN'T DO THIS AAAA
         }
     }
 }
@@ -319,6 +313,7 @@ static void applyTextureParams(unsigned int tex)
 void loadAllTextures()
 {
     texBG = loadImageToTexture("Resources/table_high_res.jpg");
+    texMyInfo = loadImageToTexture("Resources/my_info.png");
     texDeckRed = loadImageToTexture("Resources/back_red_big.png");
     texDeckBlue = loadImageToTexture("Resources/back_blue_big.png");
 
@@ -329,12 +324,13 @@ void loadAllTextures()
     texRageBtn = loadImageToTexture("Resources/rage_btn.png");
 
     texRespectPopup = loadImageToTexture("Resources/respect.png");
-
     texRageAnim[0] = loadImageToTexture("Resources/anger1.png");
     texRageAnim[1] = loadImageToTexture("Resources/anger2.png");
     texRageAnim[2] = loadImageToTexture("Resources/anger3.png");
 
+
     applyTextureParams(texBG);
+    applyTextureParams(texMyInfo);
     applyTextureParams(texDeckRed);
     applyTextureParams(texDeckBlue);
     applyTextureParams(texRedWins);
@@ -401,6 +397,7 @@ int main()
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    initFoldVAO();
 
 
     // SHADER + QUAD
@@ -517,6 +514,17 @@ int main()
 
         // RENDER BG + discard couting
         drawQuad(shader, texBG, 0, 0, 1, 1, VAO);
+
+        // MY INFO
+        glUniform1f(glGetUniformLocation(shader, "uAlphaMul"), 0.5f);
+        drawQuad(shader, texMyInfo,
+            0.90f,  
+            0.95f,   
+            0.10f,  
+            0.10f,   
+            VAO,
+            false);
+        glUniform1f(glGetUniformLocation(shader, "uAlphaMul"), 1.0f);
 
         if (playedRed.discardTex)  drawQuad(shader, playedRed.discardTex, playedRed.discardX, playedRed.discardY, SCALE_X, SCALE_Y, VAO);
         if (playedBlue.discardTex) drawQuad(shader, playedBlue.discardTex, playedBlue.discardX, playedBlue.discardY, SCALE_X, SCALE_Y, VAO);

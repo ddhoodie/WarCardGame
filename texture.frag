@@ -7,6 +7,7 @@ uniform sampler2D uTexture;
 uniform bool uShadow;
 uniform bool uUseColor = false;
 uniform vec4 uColorFill = vec4(0.0, 0.0, 0.0, 1.0);
+uniform float uAlphaMul = 1.0;
 
 void main()
 {
@@ -24,5 +25,5 @@ void main()
         return;
     }
 
-    FragColor = texColor;
+    FragColor = vec4(texColor.rgb, texColor.a * uAlphaMul);
 }

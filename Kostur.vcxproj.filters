@@ -306,5 +306,8 @@
     <Image Include="Resources\anger3.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\my_info.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <string>
 
+unsigned int VAO_FOLD = 0;
+
 void setTextureParams()
 {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -79,32 +81,6 @@ void drawQuad(unsigned int shader, unsigned int texture,
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 }
 
-void drawFoldedCard(unsigned int shader, unsigned int faceDownTex, unsigned int faceUpTex,
-    float x, float y, float sx, float sy, float foldAmount, unsigned int VAO) {
-    float flipScaleX = sx;
-
-    float cornerShrink = foldAmount * 0.5f;
-    float foldedQuad[16] = {
-        -1.0f,  1.0f - cornerShrink, 0.0f, 1.0f,
-        -1.0f, -1.0f,                 0.0f, 0.0f,
-         1.0f - cornerShrink, -1.0f,  1.0f, 0.0f,
-         1.0f - cornerShrink,  1.0f - cornerShrink, 1.0f, 1.0f
-    };
-
-    glBindBuffer(GL_ARRAY_BUFFER, VAO);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(foldedQuad), foldedQuad);
-    drawQuad(shader, faceDownTex, x, y, flipScaleX, sy, VAO);
-
-    float cornerSizeX = sx * 0.25f * foldAmount;
-    float cornerSizeY = sy * 0.25f * foldAmount;
-    drawQuad(shader, faceUpTex,
-        x + sx - cornerSizeX,
-        y + sy - cornerSizeY,
-        cornerSizeX,
-        cornerSizeY,
-        VAO);
-}
-
 float easeOutCubic(float t) {
     return 1.0f - powf(1.0f - t, 3.0f);
 }
@@ -128,4 +104,9 @@ float toNDC_X(double x, int w)
 float toNDC_Y(double y, int h)
 {
     return float(-((y / h) * 2.0 - 1.0));
+}
+
+void initFoldVAO()
+{
+    glGenVertexArrays(1, &VAO_FOLD);
 }

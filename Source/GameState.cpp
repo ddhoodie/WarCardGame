@@ -11,6 +11,7 @@ unsigned int globalShader = 0;
 unsigned int globalVAO = 0;
 
 // teksture
+unsigned int texMyInfo = 0;
 unsigned int texBG = 0;
 unsigned int texDeckRed = 0;
 unsigned int texDeckBlue = 0;

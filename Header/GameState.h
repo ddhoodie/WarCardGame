@@ -9,6 +9,7 @@ extern unsigned int globalShader;
 extern unsigned int globalVAO;
 
 // TEXTURE ID-ovi
+extern unsigned int texMyInfo;
 extern unsigned int texBG;
 extern unsigned int texDeckRed;
 extern unsigned int texDeckBlue;
