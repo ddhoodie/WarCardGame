@@ -4,14 +4,16 @@
 *.user
 *.userosscache
 *.sln.docstates
+x64/
+Debug/
+Release/
+packages/
 
 # Build output
 [Bb]in/
 [Oo]bj/
 x64/
 x86/
-Debug/
-Release/
 *.pdb
 *.idb
 *.ilk

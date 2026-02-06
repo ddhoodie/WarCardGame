@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <string>
 
-// ===== globals (extern definicije) =====
+// ===== globals  =====
 bool gDepthEnabled = true;
 bool gCullEnabled = true;
 bool gLightEnabled = true;
@@ -49,7 +49,7 @@ bool Deck52::empty() const
 
 CardId Deck52::draw()
 {
-    return order[top++]; // pretpostavka: pozivac proverio empty()
+    return order[top++]; 
 }
 
 static int cardValueNoAceSpecial(int rank)
@@ -72,7 +72,7 @@ int bestScoreAce1or10(const std::vector<int>& handIdx, const std::vector<int>& c
 
     int best = sum;
     for (int k = 1; k <= aces; ++k) {
-        int cand = sum + 9 * k;      // ace 10 umesto 1 => +9
+        int cand = sum + 9 * k;      
         if (cand <= 21) best = std::max(best, cand);
     }
     return best;

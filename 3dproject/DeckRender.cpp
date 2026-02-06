@@ -191,7 +191,7 @@ void DeckRender::draw(Renderer3D& r3d, const Camera& cam) {
 
     glUseProgram(r3d.shader);
 
-    glUniform1i(glGetUniformLocation(r3d.shader, "uIsCard"), 1);   // <<< BITNO
+    glUniform1i(glGetUniformLocation(r3d.shader, "uIsCard"), 1);   
     glUniform1i(glGetUniformLocation(r3d.shader, "uUseAlpha"), 0);
 
     r3d.draw(top, texBack, M, cam);

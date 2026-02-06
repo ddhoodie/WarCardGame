@@ -21,14 +21,12 @@ public:
     void destroy();
 
 private:
-    // gornji sto 
     Mesh top, bottom, side;
     unsigned int texFelt = 0;
-    unsigned int texSide = 0;   // crvena ivica
+    unsigned int texSide = 0;   
     float mainThickness_ = 0.0f;
     float baseHeight_ = 0.0f;
 
-    // baza 
     Mesh baseTop, baseBottom, baseSide;
-    unsigned int texBase = 0;   // tamno siva
+    unsigned int texBase = 0;   
 };

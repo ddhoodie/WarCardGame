@@ -2,7 +2,7 @@
 #include "Util.h"
 #include "Helper2D.h"
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/vec4.hpp> // za u8vec4
+#include <glm/vec4.hpp> 
 
 static glm::mat4 makeModel(const glm::vec3& pos, const glm::vec3& rot, const glm::vec3& scale) {
     glm::mat4 M(1.0f);
@@ -38,19 +38,16 @@ void ChipRender::draw(Renderer3D& r3d, const Camera& cam) {
 
     glUseProgram(r3d.shader);
 
-    // chip nije karta -> bez rounded discard
     glUniform1i(glGetUniformLocation(r3d.shader, "uIsCard"), 0);
 
     glUniform1i(glGetUniformLocation(r3d.shader, "uIsChip"), 1);
-    glUniform1f(glGetUniformLocation(r3d.shader, "uChipRadius"), /* isti r */ 0.18f);
+    glUniform1f(glGetUniformLocation(r3d.shader, "uChipRadius"), 0.18f);
 
-    // ako tvoj chip_red.png ima providnu pozadinu: uključi alpha discard
     glUniform1i(glGetUniformLocation(r3d.shader, "uUseAlpha"), 0);
 
     r3d.draw(top, texFace, M, cam);
     r3d.draw(bottom, texFace, M, cam);
 
-    // side nema alpha
     glUniform1i(glGetUniformLocation(r3d.shader, "uUseAlpha"), 0);
     r3d.draw(side, texSide, M, cam);
 

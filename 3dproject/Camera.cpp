@@ -13,7 +13,7 @@ void Camera::onMouse(double xpos, double ypos) {
     }
 
     float xoffset = (float)xpos - lastX;
-    float yoffset = lastY - (float)ypos; // invert Y
+    float yoffset = lastY - (float)ypos; 
 
     lastX = (float)xpos;
     lastY = (float)ypos;
@@ -58,5 +58,5 @@ void updateCameraFPS(GLFWwindow* w, Camera& cam, float dt)
 void Camera::onScroll(double yoffset) {
     fov -= (float)yoffset;
     if (fov < 1.0f)  fov = 1.0f;
-    if (fov > 75.0f) fov = 75.0f; // ili 45, kako želiš
+    if (fov > 75.0f) fov = 75.0f; 
 }

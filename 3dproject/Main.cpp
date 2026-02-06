@@ -1,5 +1,3 @@
-// main.cpp (refaktorisan da koristi camera.h / constants.h / gamestate.h / helper2d.h)
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -29,7 +27,11 @@
 #include "DeckRender.h"
 #include "NoteBoardRender.h"
 
-// ================== ANIM STATE (chips/deck hover) ==================
+// Autor: Viktor Srbljin
+// Opis: glavna logika igrice
+// kako igrati se moze videti ulazenjem u igricu i citanjem note boarda (pravila igre)
+
+// ANIM STATE  
 static float chipHoverLift = 0.0f;
 static float deckHoverLift = 0.0f;
 
@@ -41,7 +43,7 @@ struct ChipClickAnim {
     float spins = 3.0f;
 } chipClick;
 
-// ================== LOCAL HELPERS (samo ono što nije prebačeno) ==================
+// ================== LOCAL HELPERS  ==================
 static unsigned int createOverlayQuadVAO() {
     float quad[] = {
         -1.f,  1.f, 0.f, 1.f,
@@ -78,16 +80,13 @@ static glm::vec3 lerp3(const glm::vec3& a, const glm::vec3& b, float u) {
     return a + (b - a) * u;
 }
 
-// ============================================================
-//  POS SLOT + EPS (da se ne preklapaju / z-fight)
-// ============================================================
+
 static float stackEpsY(int i) { return 0.0020f * (float)i; }
 
 static glm::vec3 cardSlotPos(const glm::vec3& base, int i, float spacingX) {
     return base + glm::vec3((float)i * spacingX, stackEpsY(i), 0.0f);
 }
 
-// ================== CARD RENDER WRAPPER (nije u gamestate.h) ==================
 struct CardObj {
     CardRender r;
     std::string frontPath;
@@ -143,7 +142,6 @@ int main() {
 
     glBindTexture(GL_TEXTURE_2D, 0);
 
-    // digitTextures[] je extern u helper2d.h
     for (int d = 0; d < 10; d++) {
         std::string path = "Resources/" + std::to_string(d) + ".png";
         digitTextures[d] = loadImageToTexture(path.c_str());
@@ -154,7 +152,6 @@ int main() {
     }
     glBindTexture(GL_TEXTURE_2D, 0);
 
-    // texMyInfo je extern u gamestate.h (ako si tako ostavio)
     texMyInfo = loadImageToTexture("Resources/my_info.png");
     glBindTexture(GL_TEXTURE_2D, texMyInfo);
     setTextureParamsClamp();
@@ -176,7 +173,7 @@ int main() {
     unsigned int texLost = loadImageToTexture("Resources/lost.png");
     glBindTexture(GL_TEXTURE_2D, texLost); setTextureParamsClamp(); glGenerateMipmap(GL_TEXTURE_2D); glBindTexture(GL_TEXTURE_2D, 0);
 
-    // ===== BET UI state =====
+    // BET UI state
     static int gBet = 0;
     static int gWon = 0;
     static int gLost = 0;
@@ -268,19 +265,19 @@ int main() {
         }
     }
 
-    // ---------- Deck ----------
+    // Deck render
     DeckRender deck;
     deck.init(0.18f, "Resources/back_red_big.png");
     deck.pos = glm::vec3(-1.8f, 0.15f, 0.25f);
     deck.rot = glm::vec3(0.0f);
     deck.scale = glm::vec3(1.0f);
 
-    // Hover top card (samo visina)
+    // Hover top card 
     CardRender deckTopCard;
     deckTopCard.init(16, "Resources/back_red_big.png", "Resources/back_red_big.png");
     deckTopCard.scale = glm::vec3(1.0f);
 
-    // ---------- Camera ----------
+    // Camera
     Camera cam;
     cam.pos = glm::vec3(0.0f, 3.5f, 4.0f);
     glm::vec3 target = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -288,7 +285,7 @@ int main() {
     cam.up = glm::vec3(0, 1, 0);
     cam.fov = Cfg::CAM_FOV;
 
-    // ---------- Card positions ----------
+    // Card positions
     const float cardY = tableTopY + 0.10f;
     glm::vec3 playerBase = glm::vec3(-0.35f, cardY, 1.30f);
     glm::vec3 dealerBase = glm::vec3(-0.35f, cardY, -0.60f);
@@ -296,9 +293,9 @@ int main() {
 
     glm::vec3 deckTopPos = deck.pos + glm::vec3(0.0f, 0.12f, 0.0f);
 
-    // ---------- Cards container & anim queue ----------
+    // Cards container 
     std::vector<CardObj> cards; cards.reserve(64);
-    std::vector<int> cardRanks; cardRanks.reserve(64); // za bestScoreAce1or10 iz gamestate.h
+    std::vector<int> cardRanks; cardRanks.reserve(64); 
     std::vector<CardAnim> animQ; animQ.reserve(128);
 
     auto destroyAllCards = [&]() {
@@ -310,15 +307,12 @@ int main() {
         animQ.clear();
         };
 
-    // deck 52 (iz gamestate.h)
     Deck52 deck52;
     deck52.resetAndShuffle(rng);
 
-    // gameplay state
     TurnState game = TurnState::IdleNoDeal;
     bool initialDealQueued = false;
 
-    // hands hold indices into cards[]
     std::vector<int> playerHand;
     std::vector<int> dealerHand;
 
@@ -331,14 +325,13 @@ int main() {
     auto scheduleReset3s = [&](RoundResult rr) {
         gRoundResult = rr;
 
-        // prebaci bet u won/lost odmah
+        // bet to won/lost 
         if (gBet > 0) {
             if (rr == RoundResult::PlayerWin) gWon += gBet;
             else if (rr == RoundResult::DealerWin) gLost += gBet;
             gBet = 0;
         }
 
-        // overlay: start za 2s, traje 3s
         gWinOverlayTex = (rr == RoundResult::PlayerWin) ? texPlayerWins : texDealerWins;
 
         gPendingWinOverlay = (rr != RoundResult::None);
@@ -369,7 +362,7 @@ int main() {
 
     auto createCardObj = [&](const CardId& id, bool startFaceDown) -> int {
         CardObj o;
-        o.frontPath = cardPath(id); // iz gamestate.h/.cpp
+        o.frontPath = cardPath(id); 
         o.rank = id.rank;
         o.suit = id.suit;
 
@@ -489,7 +482,7 @@ int main() {
 
         updateCameraFPS(window, cam, dt);
 
-        // ---------- timers ----------
+        // timers
         if (pendingReset && nowT >= resetAtTime) {
             resetRoundInstant();
         }
@@ -507,7 +500,7 @@ int main() {
         bool busy = !animQ.empty();
         bool inputLocked = (gShowWinOverlay || pendingReset || game == TurnState::RoundOverWait);
 
-        // ---------- Hover detection ----------
+        // Hover detection
         bool hoverDeck = hoverWorldPointPx(window, cam, deck.pos, ww, wh, Cfg::HOVER_DECK_RADIUS_PX);
 
         int hoveredStack = -1;
@@ -520,11 +513,11 @@ int main() {
         }
         bool hoverChips = (hoveredStack != -1);
 
-        // ---------- Smooth lifts ----------
+        // Smooth lifts
         chipHoverLift = expApproach(chipHoverLift, hoverChips ? 0.06f : 0.0f, 14.0f, dt);
         deckHoverLift = expApproach(deckHoverLift, hoverDeck ? 0.20f : 0.0f, 14.0f, dt);
 
-        // ---------- Chip click ----------
+        // Chip click
         bool clickChip = (!inputLocked) && (hoveredStack != -1) && mousePressedOnce(window, GLFW_MOUSE_BUTTON_LEFT);
 
         if (clickChip && !chipClick.active) {
@@ -545,7 +538,7 @@ int main() {
             }
         }
 
-        // ---------- GAME INPUT ----------
+        // GAME INPUT 
         bool clickDeck = (!inputLocked) && hoverDeck && mousePressedOnce(window, GLFW_MOUSE_BUTTON_LEFT);
         bool pressSpace = (!inputLocked) && keyPressedOnce(window, GLFW_KEY_SPACE);
         if (keyPressedOnce(window, GLFW_KEY_L)) {
@@ -591,7 +584,7 @@ int main() {
             }
         }
 
-        // ---------- Anim queue update (one by one) ----------
+        //  Anim queue update
         if (!animQ.empty()) {
             CardAnim& a = animQ.front();
             CardObj& co = cards[a.cardIndex];
@@ -692,7 +685,7 @@ int main() {
             }
         }
 
-        // ---------- Cursor ----------
+        // Cursor 
         GLFWcursor* cur = cursorDefault;
         if (!inputLocked) {
             if (hoverDeck) cur = cursorDeck;
@@ -705,7 +698,7 @@ int main() {
             lastCur = cur;
         }
 
-        // ---------- Render ----------
+        // Render 
         glViewport(0, 0, ww, wh);
         glClearColor(0.08f, 0.08f, 0.10f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -752,11 +745,9 @@ int main() {
         for (auto& c : chips) c.draw(r3d, cam);
 
         glEnable(GL_CULL_FACE);
-
-        // ---- deck ----
+ 
         deck.draw(r3d, cam);
 
-        // hover top karta: SAMO visina
         if (!suppressDeckHoverCard && deckHoverLift > 0.001f && game != TurnState::RoundOverWait) {
             deckTopCard.pos = deck.pos + glm::vec3(0.0f, 0.12f + deckHoverLift, 0.0f);
             deckTopCard.rot = glm::vec3(Cfg::CARD_FACEDOWN_X, 0.0f, 0.0f);
@@ -766,7 +757,6 @@ int main() {
             glEnable(GL_CULL_FACE);
         }
 
-        // ---- cards ----
         glDisable(GL_CULL_FACE);
         for (auto& c : cards) {
             if (!c.active || !c.initialized) continue;
@@ -810,7 +800,7 @@ int main() {
         limitFPS(Cfg::TARGET_FPS);
     }
 
-    // ---------- cleanup ----------
+    // cleanup 
     table.destroy();
     rulesBoard.destroy();
     for (auto& c : chips) c.destroy();
