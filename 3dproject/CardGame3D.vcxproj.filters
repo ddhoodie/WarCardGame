@@ -18,13 +18,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="phong.vert" />
     <None Include="phong.frag" />
     <None Include="overlay.vert" />
     <None Include="overlay.frag" />
     <None Include="texture.vert" />
     <None Include="texture.frag" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
