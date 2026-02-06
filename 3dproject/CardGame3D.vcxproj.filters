@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Shader Files">
+      <UniqueIdentifier>{a4c800da-447a-4f73-81b8-0aba264c6041}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="phong.vert" />
+    <None Include="phong.frag" />
+    <None Include="overlay.vert" />
+    <None Include="overlay.frag" />
+    <None Include="texture.vert" />
+    <None Include="texture.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChipRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeckRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NoteBoardRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Helper2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CardRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChipRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TableRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeckRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NoteBoardRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\spades4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\table_high_res.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\back_blue_big.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\back_red_big.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\diamond13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\hearts13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\joker_black.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\joker_red.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\look_d.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\my_info.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\pay_respect_btn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\spades3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\chip_red.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\chip_yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\chip_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\chip_green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\clubs6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

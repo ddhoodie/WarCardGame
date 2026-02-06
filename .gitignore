@@ -1,25 +1,28 @@
-# Build folders
-x64/
-Debug/
-Release/
-bin/
-obj/
-
-# Visual Studio files
+# Visual Studio
+.vs/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
-# CMake cache if exists
-CMakeCache.txt
-CMakeFiles/
-
-# Shader intermediate (optional)
+# Build output
+[Bb]in/
+[Oo]bj/
+x64/
+x86/
+Debug/
+Release/
+*.pdb
+*.idb
+*.ilk
+*.ipch
+*.aps
 *.pch
 
-# Ignore VS auto-generated folders
-.vs/
+# CMake (ako ikad bude)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
 
-# Ignore packages
-packages/
+# Logs
+*.log
