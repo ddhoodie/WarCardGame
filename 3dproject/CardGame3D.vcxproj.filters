@@ -16,6 +16,9 @@
     <Filter Include="Source Files\Shader Files">
       <UniqueIdentifier>{a4c800da-447a-4f73-81b8-0aba264c6041}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Models">
+      <UniqueIdentifier>{4261c7be-e109-4a6d-af03-33c8ddf5d877}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="phong.vert" />
@@ -66,6 +69,9 @@
     <ClInclude Include="NoteBoardRender.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AssimpLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -102,6 +108,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NoteBoardRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssimpLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

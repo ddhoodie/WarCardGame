@@ -28,7 +28,6 @@ void TableRender::init(int segments,
     mainThickness_ = mainThickness;
     baseHeight_ = baseHeight;
 
-    // ===== gornja ploča =====
     float halfMainT = mainThickness * 0.5f;
 
     top = MakeChipTopMesh(segments, mainRadius, halfMainT);
@@ -41,9 +40,8 @@ void TableRender::init(int segments,
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
 
-    texSide = makeSolidTexture(200, 0, 0, 255); // crvena ivica
+    texSide = makeSolidTexture(200, 0, 0, 255); 
 
-    // ===== baza =====
     float halfBaseH = baseHeight * 0.5f;
 
     baseTop = MakeChipTopMesh(segments, baseRadius, halfBaseH);
@@ -61,15 +59,12 @@ void TableRender::draw(Renderer3D& r3d, const Camera& cam) {
     glUniform1i(glGetUniformLocation(r3d.shader, "uIsCard"), 0);
     glUniform1i(glGetUniformLocation(r3d.shader, "uUseAlpha"), 0);
 
-    // 1) gornji sto (kao do sad)
     glFrontFace(GL_CW);
     r3d.draw(top, texFelt, M, cam);
     glFrontFace(GL_CCW);
     r3d.draw(bottom, texFelt, M, cam);
     r3d.draw(side, texSide, M, cam);
 
-    // 2) baza: center postolja ide ispod ploče
-   // ploča je centrirana oko y=0 sa halfMainT, baza oko svog centra
     float halfMainT = mainThickness_ * 0.5f;
     float halfBaseH = baseHeight_ * 0.5f;
 

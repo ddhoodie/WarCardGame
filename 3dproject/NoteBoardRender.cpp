@@ -27,7 +27,6 @@ void NoteBoardRender::init(const char* rulesTexPath)
 
 void NoteBoardRender::rebuildMeshesIfNeeded()
 {
-    // napravi samo jednom (ako posle menjaš boardW/H/T, onda dodaj "dirty" flag)
     if (!boardBox.vao) {
         boardBox = MakeBoxMesh(boardW * 0.5f, boardH * 0.5f, boardT * 0.5f);
     }
@@ -50,14 +49,12 @@ void NoteBoardRender::draw(Renderer3D& r3d, const Camera& cam)
     glUniform1i(glGetUniformLocation(r3d.shader, "uUseAlpha"), 0);
     glUniform1i(glGetUniformLocation(r3d.shader, "uIsChip"), 0);
 
-    // Board (3D box)
     r3d.draw(boardBox, texBoard, M, cam);
 
-    // Paper (3D box) nalepljen na prednju stranu (+Z)
-    float lift = (boardT * 0.5f) + (boardT * 0.02f); // malo ispred
+    float lift = (boardT * 0.5f) + (boardT * 0.02f); 
     glm::mat4 Mpaper = glm::translate(M, glm::vec3(0.0f, 0.0f, lift));
 
-    glUniform1i(glGetUniformLocation(r3d.shader, "uUseAlpha"), 1); // ako rules.png ima alpha
+    glUniform1i(glGetUniformLocation(r3d.shader, "uUseAlpha"), 1); 
     r3d.draw(paperBox, texPaper, Mpaper, cam);
 
     glUniform1i(glGetUniformLocation(r3d.shader, "uUseAlpha"), 0);

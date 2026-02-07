@@ -38,7 +38,6 @@ void Renderer3D::begin(const Camera& cam, int w, int h) {
     glUniform3f(glGetUniformLocation(shader, "uLightPos"), 0.0f, 1.1f, -0.4f);
     glUniform3f(glGetUniformLocation(shader, "uLightColor"), 1.0f, 1.0f, 1.0f);
 
-    // Materijal (možeš menjati po objektu kasnije)
     glUniform3f(glGetUniformLocation(shader, "uKa"), 0.25f, 0.25f, 0.25f);
     glUniform3f(glGetUniformLocation(shader, "uKd"), 0.9f, 0.9f, 0.9f);
     glUniform3f(glGetUniformLocation(shader, "uKs"), 0.5f, 0.5f, 0.5f);

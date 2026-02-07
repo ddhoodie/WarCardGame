@@ -26,6 +26,7 @@
 #include "TableRender.h"
 #include "DeckRender.h"
 #include "NoteBoardRender.h"
+#include "AssimpLoader.h"
 
 // Autor: Viktor Srbljin
 // Opis: glavna logika igrice
@@ -109,9 +110,12 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "3D Kostur", nullptr, nullptr);
+    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+    GLFWwindow* window = glfwCreateWindow(mode->width, mode->height, "3D Kostur", monitor, nullptr);
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(0);
 
     if (glewInit() != GLEW_OK) { glfwTerminate(); return -1; }
 
@@ -189,6 +193,15 @@ int main() {
 
     Renderer3D r3d;
     r3d.init();
+
+    LoadedModel wine;
+
+    try {
+        wine = loadModelAssimp("Resources/wine-red.obj", "", { 180,20,20,255 });
+    }
+    catch (const std::exception& e) {
+        std::cout << "MODEL LOAD ERROR: " << e.what() << std::endl;
+    }
 
     TableRender table;
     table.init(128, 2.5f, 0.12f, "Resources/green_texture.png", 2.2f, 1.8f);
@@ -541,7 +554,11 @@ int main() {
         // GAME INPUT 
         bool clickDeck = (!inputLocked) && hoverDeck && mousePressedOnce(window, GLFW_MOUSE_BUTTON_LEFT);
         bool pressSpace = (!inputLocked) && keyPressedOnce(window, GLFW_KEY_SPACE);
-        if (keyPressedOnce(window, GLFW_KEY_L)) {
+
+        if (keyPressedOnce(window, GLFW_KEY_Z)) gDepthEnabled = !gDepthEnabled;
+        if (keyPressedOnce(window, GLFW_KEY_X)) gCullEnabled = !gCullEnabled;
+
+        if (keyPressedOnce(window, GLFW_KEY_N)) {
             gLightEnabled = !gLightEnabled;
         }
 
@@ -698,6 +715,12 @@ int main() {
             lastCur = cur;
         }
 
+        if (gDepthEnabled) glEnable(GL_DEPTH_TEST);
+        else glDisable(GL_DEPTH_TEST);
+
+        if (gCullEnabled) glEnable(GL_CULL_FACE);
+        else glDisable(GL_CULL_FACE);
+
         // Render 
         glViewport(0, 0, ww, wh);
         glClearColor(0.08f, 0.08f, 0.10f, 1.0f);
@@ -709,11 +732,19 @@ int main() {
         glUniform1f(glGetUniformLocation(overlayShader, "uAlphaMul"), 1.0f);
         drawQuad(overlayShader, texBg, 0.0f, 0.0f, 1.0f, 1.0f, overlayVAO, false);
 
-        glEnable(GL_DEPTH_TEST);
+        if (gDepthEnabled) glEnable(GL_DEPTH_TEST);
+        else glDisable(GL_DEPTH_TEST);
 
         r3d.begin(cam, ww, wh);
         table.draw(r3d, cam);
         rulesBoard.draw(r3d, cam);
+
+        glm::mat4 Mw(1.0f);
+        Mw = glm::translate(Mw, glm::vec3(1.5f, Cfg::TABLE_TOP_Y + 0.02f, -0.7f));
+        Mw = glm::scale(Mw, glm::vec3(2.2f));   
+        Mw = glm::rotate(Mw, glm::radians(0.0f), glm::vec3(1,0,0));
+
+        r3d.draw(wine.mesh, wine.tex, Mw, cam);
 
         // ---- chips ----
         glDisable(GL_CULL_FACE);

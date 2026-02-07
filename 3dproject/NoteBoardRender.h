@@ -13,9 +13,9 @@ struct NoteBoardRender {
     GLuint texPaper = 0;
 
     glm::vec3 pos{0};
-    glm::vec3 rot{0};   // radians
+    glm::vec3 rot{0};   
 
-    // world dimenzije
+    // world dimensions
     float boardW = 0.75f;
     float boardH = 1.20f;
     float boardT = 0.04f;
@@ -23,8 +23,7 @@ struct NoteBoardRender {
     float paperScaleXY = 1.0f;
     float paperScaleT  = 0.0f;
 
-    // Ako ti rules.png i dalje bude “na bok” zbog UV-a:
-    bool paperRotateUV90 = false; // probaj false prvo
+    bool paperRotateUV90 = false; 
 
     void init(const char* rulesTexPath);
     void draw(Renderer3D& r3d, const Camera& cam);

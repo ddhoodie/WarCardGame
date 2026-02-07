@@ -319,11 +319,9 @@ Mesh MakeChipBottomMesh(int segments, float r, float halfT) {
         float x1 = r * cosf(a1), z1 = r * sinf(a1);
 
         float uc = 0.5f, vc = 0.5f;
-        // flip UV na bottom da izgleda isto
         float u0 = 0.5f + x0 / (2 * r), v0 = 0.5f - z0 / (2 * r);
         float u1 = 0.5f + x1 / (2 * r), v1 = 0.5f - z1 / (2 * r);
 
-        // winding za donju stranu (da normal ide na dole)
         pushV(d, 0, y, 0, nx, ny, nz, uc, vc);
         pushV(d, x1, y, z1, nx, ny, nz, u1, v1);
         pushV(d, x0, y, z0, nx, ny, nz, u0, v0);
@@ -352,7 +350,6 @@ Mesh MakeChipSideMesh(int segments, float r, float halfT) {
         float u0 = (float)i / segments;
         float u1 = (float)(i + 1) / segments;
 
-        // dva trougla: (p0b, p1t, p0t) + (p0b, p1b, p1t)
         pushV(d, x0, y0, z0, nx0, 0, nz0, u0, 0);
         pushV(d, x1, y1, z1, nx1, 0, nz1, u1, 1);
         pushV(d, x0, y1, z0, nx0, 0, nz0, u0, 1);

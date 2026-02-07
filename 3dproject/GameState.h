@@ -6,22 +6,21 @@
 
 struct Transform {
     glm::vec3 pos{ 0,0,0 };
-    glm::vec3 rot{ 0,0,0 };   // Euler (radians) - jednostavno za start
+    glm::vec3 rot{ 0,0,0 };   
     glm::vec3 scale{ 1,1,1 };
 };
 
 struct CardEntity {
-    int cardID = -1;            // suit*13 + (rank-1)
+    int cardID = -1;            
     bool occupied = false;
 
-    // anim states (reuse ideju iz 2D)
-    float dealT = 0.0f;         // 0..1 kretanje od deck -> target
-    float flipT = 0.0f;         // 0..1 rotacija 0..PI
+    float dealT = 0.0f;         
+    float flipT = 0.0f;    
     bool flipping = false;
     bool faceUp = false;
 
     bool selected = false;
-    float selectT = 0.0f;       // 0..1 lift
+    float selectT = 0.0f;       
 
     Transform tr;
 };
